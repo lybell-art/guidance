@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 51a3c7ed1c63bc7478696a3f0d828b9c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gridObject: {instanceID: 0}
+  - assignment: {fileID: 7267037139862069731, guid: f9017e32de3c06444add9b7c4d34e113, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,75 @@
+{
+    "stageNo": 1,
+    "startPoint": {
+        "x": -8.069999694824219,
+        "y": -1.9500000476837159,
+        "z": 0.0
+    },
+    "endPoint": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "platformTileType": "Stage1 Platform",
+    "width": 36,
+    "height": 17,
+    "offset": {
+        "x": -12,
+        "y": -8
+    },
+    "propTiles": [
+        {
+            "position": {
+                "x": -6,
+                "y": -3,
+                "z": 0
+            },
+            "tileType": "props_5"
+        },
+        {
+            "position": {
+                "x": 5,
+                "y": 2,
+                "z": 0
+            },
+            "tileType": "props_6"
+        },
+        {
+            "position": {
+                "x": 7,
+                "y": -1,
+                "z": 0
+            },
+            "tileType": "props_0"
+        },
+        {
+            "position": {
+                "x": 12,
+                "y": -3,
+                "z": 0
+            },
+            "tileType": "props_1"
+        },
+        {
+            "position": {
+                "x": 13,
+                "y": -3,
+                "z": 0
+            },
+            "tileType": "props_1"
+        },
+        {
+            "position": {
+                "x": 14,
+                "y": -3,
+                "z": 0
+            },
+            "tileType": "props_1"
+        }
+    ],
+    "objectDataSerialized": [
+        "{\"uuid\":\"c1209df1-32c5-4cee-aad4-de8fbb924382\",\"type\":\"distractor\",\"position\":{\"x\":12.5,\"y\":4.5,\"z\":0.0}}",
+        "{\"uuid\":\"139f8870-32ba-4b15-ac9c-c2e75be35df3\",\"type\":\"distractor\",\"position\":{\"x\":9.5,\"y\":-2.5,\"z\":0.0}}",
+        "{\"uuid\":\"3c006c15-fd42-44bc-9844-a431e2cc78cf\",\"type\":\"distractor\",\"position\":{\"x\":-0.5,\"y\":1.5,\"z\":0.0}}"
+    ]
+}

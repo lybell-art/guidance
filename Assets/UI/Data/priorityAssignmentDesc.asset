@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283f78e3512838c4f86590e0fc05612a, type: 3}
+  m_Name: priorityAssignmentDesc
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 7468994815573319790, guid: 51288b6c9f67c6d4aabb0c60d0f5770b, type: 3}
+  title: "\uC6B0\uC120\uC21C\uC704 \uACFC\uC81C"
+  description: "\uAFB9 \uB20C\uB7EC\uC11C \uC6B0\uC120\uC21C\uC704\uAC00 \uB354 \uB192\uC740
+    \uACFC\uC81C\uB97C \uC904 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\uD559\uC0DD\uC740
+    \uC6B0\uC120\uC21C\uC704\uAC00 \uB354 \uB192\uC740 \uACFC\uC81C\uBD80\uD130 \uC774\uB3D9\uD558\uB824\uACE0
+    \uD560 \uAC83\uC785\uB2C8\uB2E4."
+  identifier: priorityAssignment

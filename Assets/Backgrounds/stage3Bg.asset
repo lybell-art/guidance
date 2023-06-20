@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e09fb30c4296854a82d41a8eaa6ee26, type: 3}
+  m_Name: stage3Bg
+  m_EditorClassIdentifier: 
+  minY: 128
+  maxY: 2147483647
+  sources:
+  - sprite: {fileID: -745809415966944400, guid: ffb6ff88d20b6a74b894c4a1037fecdf, type: 3}
+    effectX: 1
+    effectY: 0.05
+  - sprite: {fileID: 7438281904862714666, guid: ffb6ff88d20b6a74b894c4a1037fecdf, type: 3}
+    effectX: 0.5
+    effectY: 0.02
+  - sprite: {fileID: -4005031031015517799, guid: ffb6ff88d20b6a74b894c4a1037fecdf, type: 3}
+    effectX: 0.2
+    effectY: 0
