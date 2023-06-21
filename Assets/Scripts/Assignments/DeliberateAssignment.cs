@@ -43,7 +43,7 @@ public class DeliberateAssignment : IAssignment
     }
     public void PauseTask()
     {
-        if(!IsExistingStatus(this.status)) return;
+        if(this.status != AssignmentStatus.running) return;
         activateTime = Time.time - activateStartTime;
         activateStartTime = Time.time;
         scoreManager?.AddDeliberation(activateTime);
@@ -51,9 +51,8 @@ public class DeliberateAssignment : IAssignment
     public void FinishTask()
     {
         if(!IsExistingStatus(this.status)) return;
+        PauseTask();
         this.SetStatus(AssignmentStatus.success);
-        activateTime = Time.time - activateStartTime;
-        scoreManager?.AddDeliberation(activateTime);
     }
     public void CompleteTask()
     {

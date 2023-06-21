@@ -40,7 +40,7 @@ public class ScoreManager: MonoBehaviour, IScoreManager, IStageLoadable
     {
         get
         {
-            return deliberationDuration >= 20f && remainTime < 0;
+            return deliberationDuration >= 30f && (remainTime < 0 || collectedWizdomCount > 7);
         }
     }
     public int failedCount {get; private set;}

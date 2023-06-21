@@ -73,7 +73,7 @@ public class TilemapManager : MonoBehaviour
 		//graph = GuidancePlatform.GraphMaker.Make(tileMask, barriers, movingPlatforms);
 		graph = GuidancePlatform.GraphMaker.Make(tileMask);
 		pathfinder = new GuidancePlatform.TrailMaker(tileMask, graph, offset);
-		graph.Debug(_offset);
+		//graph.Debug(_offset);
 	}
 
 	// Update is called once per frame
