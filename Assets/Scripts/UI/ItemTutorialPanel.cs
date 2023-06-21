@@ -21,12 +21,12 @@ public class ItemTutorialPanel : MonoBehaviour, IPointerClickHandler
     }
     void OnEnable()
     {
-        PauseManager.Instance?.Pause();
+        PauseManager.Instance?.Pause(1);
     }
     void OnDisable()
     {
         StopAllCoroutines();
-        PauseManager.Instance?.Resume();
+        PauseManager.Instance?.Resume(1);
     }
     public void SetData(ItemTutorialData data)
     {

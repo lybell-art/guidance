@@ -13,11 +13,11 @@ public class TutorialPanel : MonoBehaviour, IPointerClickHandler
     }
     void OnEnable()
     {
-        PauseManager.Instance?.Pause();
+        PauseManager.Instance?.Pause(1);
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        PauseManager.Instance?.Resume();
+        PauseManager.Instance?.Resume(1);
         gameObject.SetActive(false);
         GameManager.Instance?.SaveFlag("tutorial", true);
     }

@@ -15,17 +15,19 @@ public class PauseManager : MonoBehaviour
 		}
 	}
 
-	private bool _paused = false;
+	private int pauseChannel = 0;
 	public static bool paused
 	{
 		get
 		{
 			if(instance.Equals(null)) return false;
-			return instance._paused;
+			return instance.pauseChannel != 0;
 		}
 	}
 	public Action OnPauseEvent;
 	public Action OnResumeEvent;
+	public Action<int> OnChannelPauseEvent;
+	public Action<int> OnChannelResumeEvent;
 
 	void Awake()
 	{
@@ -34,21 +36,23 @@ public class PauseManager : MonoBehaviour
 	}
 	void Update()
 	{
-		if(Input.GetKeyDown("p")) Toggle();
+		if(Input.GetKeyDown("p")) Toggle(0);
 	}
-	public void Pause()
+	public void Pause(int channel=0)
 	{
-		this._paused = true;
-		OnPauseEvent?.Invoke();
+		this.pauseChannel |= 1 << channel;
+		OnChannelPauseEvent?.Invoke(channel);
+		if(this.pauseChannel != 0) OnPauseEvent?.Invoke();
 	}
-	public void Resume()
+	public void Resume(int channel=0)
 	{
-		this._paused = false;
-		OnResumeEvent?.Invoke();
+		this.pauseChannel &= ~(1 << channel);
+		OnChannelResumeEvent?.Invoke(channel);
+		if(this.pauseChannel == 0) OnResumeEvent?.Invoke();
 	}
-	public void Toggle()
+	public void Toggle(int channel=0)
 	{
-		if(this._paused) Resume();
-		else Pause();
+		if((this.pauseChannel & (1 << channel)) != 0) Resume(channel);
+		else Pause(channel);
 	}
 }
