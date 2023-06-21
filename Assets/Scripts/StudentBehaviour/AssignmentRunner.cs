@@ -136,7 +136,6 @@ public class AssignmentRunner : MonoBehaviour, IStudentBrain, IAssignmentRunner,
 		}
 		else 
 		{
-			stablePosition = student.position;
 			student.SetHorizontal(0f);
 			this.runningStatus = false;
 		}
