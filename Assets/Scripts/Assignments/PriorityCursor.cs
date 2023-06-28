@@ -17,6 +17,7 @@ public class PriorityCursor : MonoBehaviour
     }
     public void SetPriority(int priority)
     {
+        if(!this.enabled) return;
         if(priority != this.priority) animator.Play(Constants.priorityAssignmentPre + priority.ToString());
         this.priority = priority;
     }

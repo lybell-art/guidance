@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class CameraMover : MonoBehaviour, IStageLoadable
 {
-	private readonly float touchZoomFactor = 1f;
+	private readonly float touchZoomFactor = 0.005f;
 	private readonly float mouseZoomFactor = -0.5f;
 	private readonly float panThreshold = 2f;
 	private readonly float snapThreshold = 1f;
@@ -64,11 +64,13 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 	{
 		clickManager.OnPointerStart += this.OnPointerStart;
 		clickManager.OnPointerEnd += this.OnPointerEnd;
+		clickManager.OnPointerCanceled += this.OnPointerEnd;
 	}
 	void OnDisable()
 	{
 		clickManager.OnPointerStart -= this.OnPointerStart;
 		clickManager.OnPointerEnd -= this.OnPointerEnd;
+		clickManager.OnPointerCanceled -= this.OnPointerEnd;
 	}
 
 	// Update is called once per frame
@@ -79,7 +81,11 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 		Vector2 panDelta;
 		float zoomDelta;
 		if(Input.touchCount == 2) (panDelta, zoomDelta) = GetTouchCameraInput();
-		else (panDelta, zoomDelta) = GetMouseCameraInput();
+		else
+		{
+			_isHardLocked = false;
+			(panDelta, zoomDelta) = GetMouseCameraInput();
+		}
 
 		if(panDelta.magnitude > panThreshold) _isLocked = true;
 		else if(_isLocked && !_isHardLocked) TrySnap();
@@ -102,27 +108,26 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 
 	public void SnapToFollower()
 	{
+		Debug.Log("nye!");
 		this.isFollowing = true;
 	}
 
 	private (Vector2, float) GetTouchCameraInput()
 	{
-		if(Input.touchCount != 2)
-		{
-			_isHardLocked = false;
-			return (new Vector2(), 0f);
-		}
 		_isHardLocked = true;
 		
-		Vector2 curTouchPos0 = Input.GetTouch(0).position;
-		Vector2 curTouchPos1 = Input.GetTouch(1).position;
-		Vector2 preTouchPos0 = curTouchPos0 - Input.GetTouch(0).deltaPosition;
-		Vector2 preTouchPos1 = curTouchPos1 - Input.GetTouch(1).deltaPosition;
+		Touch touch1 = Input.GetTouch(0);
+		Touch touch2 = Input.GetTouch(1);
+
+		Vector2 curTouchPos0 = touch1.position;
+		Vector2 curTouchPos1 = touch2.position;
+		Vector2 preTouchPos0 = touch1.phase == TouchPhase.Began ? curTouchPos0 : curTouchPos0 - touch1.deltaPosition;
+		Vector2 preTouchPos1 = touch2.phase == TouchPhase.Began ? curTouchPos1 : curTouchPos1 - touch2.deltaPosition;
 
 		// get zoom factor
 		float preDist = Vector2.Distance(preTouchPos0, preTouchPos1);
 		float curDist = Vector2.Distance(curTouchPos0, curTouchPos1);
-		float zoomDelta = (curDist - preDist) * touchZoomFactor;
+		float zoomDelta = (preDist - curDist) * touchZoomFactor;
 
 		// get pan factor
 		Vector2 curTouchCenter = (curTouchPos0 + curTouchPos1) / 2f;

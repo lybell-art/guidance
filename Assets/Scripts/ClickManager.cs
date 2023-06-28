@@ -18,6 +18,7 @@ public class ClickManager : MonoBehaviour
 
 	public Action OnPointerStart;
 	public Action OnPointerEnd;
+	public Action OnPointerCanceled;
 	public Action<Vector3> OnClick;
 	public Action<Vector3> OnHoldStart;
 	public Action<Vector3, float> OnHolding;
@@ -34,7 +35,11 @@ public class ClickManager : MonoBehaviour
 		HandlePointerStart();
 		// pointer end
 		if(isPointerStarted && IsPointerUp()) HandlePointerEnd();
-		if(isTouch && Input.touchCount > 1) isPointerStarted = false;
+		if(isTouch && Input.touchCount > 1)
+		{
+			isPointerStarted = false;
+			OnPointerCanceled?.Invoke();
+		}
 		if(isPointerStarted)
 		{
 			if(holdTime <= holdThreshold && holdTime + Time.deltaTime > holdThreshold)

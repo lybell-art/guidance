@@ -13,6 +13,7 @@ public class AssignmentGenerator : MonoBehaviour
 	private AbilityHaveUI priorityUI;
 	private AbilityHaveUI flickUI;
 	private ItemTutorialPanelController itemDescPanel;
+	private System.Action<Vector3> OnHoldCanceledWrapper;
 
 	[SerializeField] private GameObject holdCursorObj;
 	[SerializeField] private GameObject priorityAbilityUIObj;
@@ -26,6 +27,7 @@ public class AssignmentGenerator : MonoBehaviour
 		priorityUI = priorityAbilityUIObj.GetComponent<AbilityHaveUI>();
 		flickUI = flickAbilityUIObj.GetComponent<AbilityHaveUI>();
 		itemDescPanel = GetComponent<ItemTutorialPanelController>();
+		OnHoldCanceledWrapper = (_)=>{this.OnHoldCanceled();};
 	}
 	void OnEnable()
 	{
@@ -33,8 +35,9 @@ public class AssignmentGenerator : MonoBehaviour
 		clickManager.OnHoldStart += this.OnHoldStart;
 		clickManager.OnHolding += this.OnHolding;
 		clickManager.OnHoldEnd += this.OnHoldEnd;
-		clickManager.OnDrag += this.OnDrag;
+		clickManager.OnDrag += this.OnHoldCanceledWrapper;
 		clickManager.OnFlick += this.OnFlick;
+		clickManager.OnPointerCanceled += this.OnHoldCanceled;
 	}
 	void OnDisable()
 	{
@@ -42,8 +45,9 @@ public class AssignmentGenerator : MonoBehaviour
 		clickManager.OnHoldStart -= this.OnHoldStart;
 		clickManager.OnHolding -= this.OnHolding;
 		clickManager.OnHoldEnd -= this.OnHoldEnd;
-		clickManager.OnDrag -= this.OnDrag;
+		clickManager.OnDrag -= this.OnHoldCanceledWrapper;
 		clickManager.OnFlick -= this.OnFlick;
+		clickManager.OnPointerCanceled -= this.OnHoldCanceled;
 	}
 
 	public void EarnPriorityAbility()
@@ -86,7 +90,7 @@ public class AssignmentGenerator : MonoBehaviour
 		holdCursorObj.SetActive(false);
 		assignmentManager.TryPlaceAssignment(mousePos, AssignmentType.priority, ConvertTimeToPriority(time));
 	}
-	void OnDrag(Vector3 mousePos)
+	void OnHoldCanceled()
 	{
 		holdCursorObj.SetActive(false);
 	}
