@@ -2,24 +2,27 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Guidance</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body style="text-align: center">
-    <canvas id="unity-canvas" width=1280 height=720 style="width: 1280px; height: 720px; background: #231F20"></canvas>
+  <body>
+    <div class="unity-canvas-wrapper">
+      <canvas id="unity-canvas" class="fullscreen"></canvas>
+      <img id="fullscreen-button" src="assets/fullscreen-button.png" srcset="assets/fullscreen-button.png, assets/fullscreen-button-2x.png 2x"/>
+      <div id="unity-loading-container" class="fullscreen center-container">
+        <img class="indicator-icon" src="assets/logo.png" srcset="assets/logo.png, assets/logo-2x.png 2x">
+        <div class="unity-progress-bar-empty">
+          <div class="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="mobile-horiz-indicator" class="fullscreen center-container hidden">
+        <img class="indicator-icon" src="assets/rotate.png" srcset="assets/rotate.png, assets/rotate-2x.png 2x">
+        <p class="indicator-text">Turn the device horizontally!</p>
+      </div>
+    </div>
     <script src="Build/Guidance_Web.loader.js"></script>
-    <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/Guidance_Web.data.unityweb",
-        frameworkUrl: "Build/Guidance_Web.framework.js.unityweb",
-        codeUrl: "Build/Guidance_Web.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Lybell",
-        productName: "Guidance",
-        productVersion: "1.0.1a",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
-    </script>
+    <script src="js/index.js" type="module"></script>
   </body>
 </html>
