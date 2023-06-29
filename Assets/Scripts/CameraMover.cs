@@ -134,7 +134,11 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 		Vector2 preTouchCenter = (preTouchPos0 + preTouchPos1) / 2f;
 		Vector2 panDelta = curTouchCenter - preTouchCenter;
 
+		#if UNITY_WEBGL
+		return (panDelta, -zoomDelta);
+		#else
 		return (-panDelta, zoomDelta);
+		#endif
 	}
 	private (Vector2, float) GetMouseCameraInput()
 	{
