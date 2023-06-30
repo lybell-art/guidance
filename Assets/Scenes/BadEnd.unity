@@ -4538,6 +4538,7 @@ GameObject:
   - component: {fileID: 1157471981}
   - component: {fileID: 1157471980}
   - component: {fileID: 1157471982}
+  - component: {fileID: 1157471983}
   m_Layer: 0
   m_Name: Ending Scene Controller
   m_TagString: Untagged
@@ -4719,6 +4720,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14ab697bb2ca5c14097084389eaae5ce, type: 3}
   - {fileID: 8300000, guid: 2ce30cfcb63828e48ae54b25972b2a2d, type: 3}
   - {fileID: 8300000, guid: e73d8bc180cc2174398cfa66c71ff129, type: 3}
+--- !u!114 &1157471983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157471977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c68d66181c85724f961c2d5697457bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184472414
 GameObject:
   m_ObjectHideFlags: 0
