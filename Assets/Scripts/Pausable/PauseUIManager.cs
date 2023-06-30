@@ -25,7 +25,7 @@ public class PauseUIManager : MonoBehaviour
     }
     void EnableUI(int channel)
     {
-        if(channel == 0) pauseUIObj.SetActive(true);
+        if(channel == 0) pauseUIController.Show();
     }
     void DisableUI(int channel)
     {

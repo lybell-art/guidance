@@ -1,23 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ItemTutorialPanel : MonoBehaviour, IPointerClickHandler
+public class ItemTutorialPanel : FadableContainer, IPointerClickHandler
 {
     private Image itemImage;
     private TextMeshProUGUI titleText;
     private TextMeshProUGUI descriptionText;
-    private CanvasGroup canvasGroup;
-    void Awake()
+    protected override void Awake()
     {
         itemImage = transform.GetChild(0).GetComponent<Image>();
         titleText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         descriptionText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-        canvasGroup = GetComponent<CanvasGroup>();
-        gameObject.SetActive(false);
+        base.Awake();
     }
     void OnEnable()
     {
@@ -34,39 +31,19 @@ public class ItemTutorialPanel : MonoBehaviour, IPointerClickHandler
         titleText.SetText(data.title);
         descriptionText.SetText(data.description);
     }
-    public void Show()
+    public override void Show()
     {
-        gameObject.SetActive(true);
-        StartCoroutine(Fade(1.0f, 0.4f));
+        base.Show();
         StartCoroutine(AutoHide());
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        StartCoroutine(Fade(0.0f, 0.4f));
-    }
-    public IEnumerator Fade(float alpha, float duration)
-    {
-        if(duration <= 0f)
-        {
-            canvasGroup.alpha = alpha;
-            if(alpha == 0.0f) gameObject.SetActive(false);
-            yield break;
-        }
-
-        float time = 0f;
-        float startAlpha = canvasGroup.alpha;
-        while(time < duration)
-        {
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, alpha, time / duration);
-            yield return null;
-            time += Time.deltaTime;
-        }
-        canvasGroup.alpha = alpha;
-        if(alpha == 0.0f) gameObject.SetActive(false);
+        Hide();
     }
     public IEnumerator AutoHide()
     {
         yield return new WaitForSeconds(5f);
-        yield return Fade(0.0f, 0.4f);
+        yield return Fade(0.0f, baseDuration);
+        gameObject.SetActive(false);
     }
 }
