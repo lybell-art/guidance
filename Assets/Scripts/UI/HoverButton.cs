@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler
 {
     [SerializeField] private Sprite normalImage;
     [SerializeField] private Sprite hoverImage;
@@ -19,6 +19,10 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         ChangeImage(hoverImage);
+    }
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        ChangeImage(normalImage);
     }
     public void OnPointerExit(PointerEventData eventData)
     {

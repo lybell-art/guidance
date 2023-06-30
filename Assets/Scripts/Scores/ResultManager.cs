@@ -35,9 +35,9 @@ public class ResultManager : MonoBehaviour
     {
         bool isMinus = time < 0;
         int _time = isMinus ? -time : time;
-        int minute = time / 60;
+        int minute = _time / 60;
         string seconds = (_time % 60).ToString("D2");
 
-        return $"{minute}:{seconds}";
+        return $"{(isMinus ? "-" : "")}{minute}:{seconds}";
     }
 }

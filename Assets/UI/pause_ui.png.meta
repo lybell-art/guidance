@@ -28,13 +28,16 @@ TextureImporter:
     second: sound_ui_7
   - first:
       213: 8386646035431532572
-    second: sound_ui_8
+    second: simple_button_0
   - first:
       213: 3372526643887888648
     second: sound_ui_9
   - first:
       213: -5232852050088702686
     second: pause_ui_0
+  - first:
+      213: -3878272284643620513
+    second: simple_button_1
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -317,7 +320,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sound_ui_8
+      name: simple_button_0
       rect:
         serializedVersion: 2
         x: 17
@@ -375,6 +378,27 @@ TextureImporter:
       bones: []
       spriteID: 22dc94809cc2167b0800000000000000
       internalID: -5232852050088702686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: simple_button_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f590393b7eb9d2ac0800000000000000
+      internalID: -3878272284643620513
       vertices: []
       indices: 
       edges: []

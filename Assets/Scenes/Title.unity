@@ -1193,6 +1193,7 @@ GameObject:
   - component: {fileID: 1296620149}
   - component: {fileID: 1296620148}
   - component: {fileID: 1296620147}
+  - component: {fileID: 1296620150}
   m_Layer: 5
   m_Name: Resume Button
   m_TagString: Untagged
@@ -1314,6 +1315,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296620145}
   m_CullTransparentMesh: 1
+--- !u!114 &1296620150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296620145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdc0c65db8a7ce4a9c6c343d98042cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalImage: {fileID: 8386646035431532572, guid: 5237396bf81043b49aa6aa277e6670a4, type: 3}
+  hoverImage: {fileID: -3878272284643620513, guid: 5237396bf81043b49aa6aa277e6670a4, type: 3}
 --- !u!1 &1306845882
 GameObject:
   m_ObjectHideFlags: 0
