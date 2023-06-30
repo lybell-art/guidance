@@ -100,6 +100,7 @@ namespace Guidance.Ending
             // #3
             yield return FallStudent();
             yield return LookMonoCity();
+            yield return null;
 
             // #4
             audioPlayer.PlayFade(2, 1f);
