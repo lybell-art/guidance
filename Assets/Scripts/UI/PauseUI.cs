@@ -18,7 +18,7 @@ public class PauseUI : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        StartCoroutine(FadeOutResume());
+        //StartCoroutine(FadeOutResume());
     }
     public void Hide()
     {

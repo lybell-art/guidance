@@ -54,6 +54,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>, ISaveManager
     {
         return this.saveManager.GetFlag(key);
     }
+    public void SaveFloat(string key, float value)
+    {
+        this.saveManager.SaveFloat(key, value);
+    }
+    public float GetFloat(string key)
+    {
+        return this.saveManager.GetFloat(key);
+    }
+    public float GetFloat(string key, float defaultValue)
+    {
+        return this.saveManager.GetFloat(key, defaultValue);
+    }
     public void ApplySave()
     {
         this.saveManager.ApplySave();

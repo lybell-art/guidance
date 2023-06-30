@@ -453,6 +453,7 @@ GameObject:
   - component: {fileID: 661453691}
   - component: {fileID: 661453690}
   - component: {fileID: 661453692}
+  - component: {fileID: 661453693}
   m_Layer: 0
   m_Name: Title BGM
   m_TagString: Untagged
@@ -582,6 +583,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c68d66181c85724f961c2d5697457bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &661453693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661453689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428035fde05c6a14287e0d0794b1c101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 2cd7aa16ae44f5a43afb6ed4cb71b3d3, type: 2}
 --- !u!1 &944150347
 GameObject:
   m_ObjectHideFlags: 0

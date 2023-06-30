@@ -6,5 +6,8 @@ public interface ISaveManager
 {
     void SaveFlag(string name, bool flag);
     bool GetFlag(string name);
+    void SaveFloat(string name, float value);
+    float GetFloat(string name);
+    float GetFloat(string name, float defaultValue);
     void ApplySave();
 }
