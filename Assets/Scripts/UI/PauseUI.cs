@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class PauseUI : MonoBehaviour, IPointerClickHandler
+public class PauseUI : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
     void Awake()
@@ -16,9 +15,9 @@ public class PauseUI : MonoBehaviour, IPointerClickHandler
     {
         StartCoroutine(Fade(1.0f, 0.4f));
     }
-    public void OnPointerClick(PointerEventData eventData)
+    public void Resume()
     {
-        //StartCoroutine(FadeOutResume());
+        StartCoroutine(FadeOutResume());
     }
     public void Hide()
     {

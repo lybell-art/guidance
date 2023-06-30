@@ -7,11 +7,12 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 {
 	private readonly float touchZoomFactor = 0.005f;
 	private readonly float mouseZoomFactor = -0.5f;
-	private readonly float panThreshold = 2f;
-	private readonly float snapThreshold = 1f;
+	private readonly float panThreshold = 1f;
+	private readonly float snapThreshold = 2f;
 
 	private bool _isLocked = false;
-	private bool _isHardLocked = false;
+	private bool _isTouchHardLocked = false;
+	private bool _isMouseHardLocked = false;
 	private bool _isTempLocked = false;
 	private Vector3 prevMouseWheelDelta;
 	private Collider2D confiner;
@@ -24,11 +25,18 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 	[SerializeField] private GameObject virtualMover;
 	[SerializeField] private GameObject follower;
 
+	private bool isHardLocked
+	{
+		get
+		{
+			return _isTouchHardLocked || _isMouseHardLocked;
+		}
+	}
 	public bool isFollowing
 	{
 		get
 		{
-			return !(_isLocked || _isHardLocked || _isTempLocked);
+			return !(_isLocked || isHardLocked || _isTempLocked);
 		}
 		set
 		{
@@ -83,12 +91,12 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 		if(Input.touchCount == 2) (panDelta, zoomDelta) = GetTouchCameraInput();
 		else
 		{
-			_isHardLocked = false;
+			_isTouchHardLocked = false;
 			(panDelta, zoomDelta) = GetMouseCameraInput();
 		}
 
 		if(panDelta.magnitude > panThreshold) _isLocked = true;
-		else if(_isLocked && !_isHardLocked) TrySnap();
+		else if(_isLocked && !isHardLocked && GameManager.Instance?.GetFlag("option_cameraSnap", true) == true) TrySnap();
 
 		if(isFollowing) followObject();
 		else moveObject(panDelta);
@@ -97,7 +105,8 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 	public void Initialize()
 	{
 		_isLocked = false;
-		_isHardLocked = false;
+		_isTouchHardLocked = false;
+		_isMouseHardLocked = false;
 		_isTempLocked = false;
 	}
 	public void OnLoadStage(int stageNo, StageData stageData)
@@ -114,7 +123,7 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 
 	private (Vector2, float) GetTouchCameraInput()
 	{
-		_isHardLocked = true;
+		_isTouchHardLocked = true;
 		
 		Touch touch1 = Input.GetTouch(0);
 		Touch touch2 = Input.GetTouch(1);
@@ -146,14 +155,14 @@ public class CameraMover : MonoBehaviour, IStageLoadable
 		if(Input.GetMouseButtonDown(2))
 		{
 			prevMouseWheelDelta = Input.mousePosition;
-			_isHardLocked = true;
+			_isMouseHardLocked = true;
 		}
 		if(Input.GetMouseButton(2))
 		{
 			panDelta = Input.mousePosition - prevMouseWheelDelta;
 			prevMouseWheelDelta = Input.mousePosition;
 		}
-		if(Input.GetMouseButtonUp(2)) _isHardLocked = false;
+		if(Input.GetMouseButtonUp(2)) _isMouseHardLocked = false;
 		float zoomDelta = Input.mouseScrollDelta.y * mouseZoomFactor;
 		return (-panDelta, zoomDelta);
 	}

@@ -12,6 +12,10 @@ public class MemorySaveManager : ISaveManager
     }
     public bool GetFlag(string key)
     {
+        return GetFlag(key, false);
+    }
+    public bool GetFlag(string key, bool defaultValue)
+    {
         if(tempSaver.ContainsKey(key)) return tempSaver[key];
         return false;
     }
@@ -32,30 +36,52 @@ public class MemorySaveManager : ISaveManager
     {
 
     }
+    public bool HasKeyBool(string key)
+    {
+        return tempSaver.ContainsKey(key);
+    }
+    public bool HasKeyFloat(string key)
+    {
+        return tempSaverFloat.ContainsKey(key);
+    }
 }
 
 public class PrefsSaveManager : ISaveManager
 {
+    private MemorySaveManager cache = new MemorySaveManager();
     public void SaveFlag(string key, bool flag)
     {
         PlayerPrefs.SetInt(key, flag ? 1 : 0);
+        cache.SaveFlag(key, flag);
     }
     public bool GetFlag(string key)
     {
-        int flagData = PlayerPrefs.GetInt(key, 0);
+        return GetFlag(key, false);
+    }
+    public bool GetFlag(string key, bool defaultValue)
+    {
+        if(cache.HasKeyBool(key)) return cache.GetFlag(key, defaultValue);
+
+        int flagData = PlayerPrefs.GetInt(key, defaultValue ? 1 : 0);
+        cache.SaveFlag(key, flagData != 0);
         return flagData != 0;
     }
     public void SaveFloat(string key, float value)
     {
         PlayerPrefs.SetFloat(key, value);
+        cache.SaveFloat(key, value);
     }
     public float GetFloat(string key)
     {
-        return PlayerPrefs.GetFloat(key, 0f);
+        return GetFloat(key, 0f);
     }
     public float GetFloat(string key, float defaultValue)
     {
-        return PlayerPrefs.GetFloat(key, defaultValue);
+        if(cache.HasKeyFloat(key)) return cache.GetFloat(key, defaultValue);
+
+        float result = PlayerPrefs.GetFloat(key, defaultValue);
+        cache.SaveFloat(key, result);
+        return result;
     }
 
     public void ApplySave()
