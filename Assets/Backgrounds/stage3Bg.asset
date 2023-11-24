@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e09fb30c4296854a82d41a8eaa6ee26, type: 3}
   m_Name: stage3Bg
   m_EditorClassIdentifier: 
-  minY: 128
+  minY: 180
   maxY: 2147483647
   sources:
   - sprite: {fileID: -745809415966944400, guid: ffb6ff88d20b6a74b894c4a1037fecdf, type: 3}
