@@ -13,4 +13,5 @@ public interface ISaveManager
     float GetFloat(string name, float defaultValue);
     
     void ApplySave();
+    void Reset();
 }

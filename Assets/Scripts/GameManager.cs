@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Lybell.Libs;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>, ISaveManager
 {
@@ -73,5 +74,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>, ISaveManager
     public void ApplySave()
     {
         this.saveManager.ApplySave();
+    }
+    public void Reset()
+    {
+        this.saveManager.Reset();
     }
 }
