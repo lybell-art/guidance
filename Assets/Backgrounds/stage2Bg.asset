@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e09fb30c4296854a82d41a8eaa6ee26, type: 3}
   m_Name: stage2Bg
   m_EditorClassIdentifier: 
-  minY: 64
-  maxY: 128
+  minY: 84
+  maxY: 180
   sources:
   - sprite: {fileID: 6161003476061374739, guid: 9458e8f38b7d66843894ff656a6ab44b, type: 3}
     effectX: 1

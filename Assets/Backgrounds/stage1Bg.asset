@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: stage1Bg
   m_EditorClassIdentifier: 
   minY: -2147483648
-  maxY: 64
+  maxY: 84
   sources:
   - sprite: {fileID: -790982996757745144, guid: 18a3d5cd1b36e614bbd52463459f795f, type: 3}
     effectX: 1

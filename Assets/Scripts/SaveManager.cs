@@ -44,6 +44,11 @@ public class MemorySaveManager : ISaveManager
     {
         return tempSaverFloat.ContainsKey(key);
     }
+    public void Reset()
+    {
+        tempSaver.Clear();
+        tempSaverFloat.Clear();
+    }
 }
 
 public class PrefsSaveManager : ISaveManager
@@ -87,5 +92,10 @@ public class PrefsSaveManager : ISaveManager
     public void ApplySave()
     {
         PlayerPrefs.Save();
+    }
+    public void Reset()
+    {
+        cache.Reset();
+        PlayerPrefs.DeleteAll();
     }
 }
