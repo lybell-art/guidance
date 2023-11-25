@@ -66,13 +66,24 @@ namespace Guidance.Ending
 		}
 		private IEnumerator PlayImmediate(string str)
 		{
-			textUI.SetText(str);
+			int length = str.Length;
+			StringBuilder speech = new StringBuilder(length);
+			for(int i=0; i<length; i++)
+			{
+				if(str[i] == '$')
+				{
+					if(i+1 >= length) break;
+					if(System.Char.IsDigit(str[i+1])) i++;
+				}
+				else speech.Append(str[i]);
+			}
+			textUI.SetText(speech);
 			yield return new WaitForSeconds(0.5f);
 		}
 
 		private bool GetKey()
 		{
-			return Input.GetMouseButton(0);
+			return Input.GetMouseButton(0) || Input.touchCount > 0;
 		}
 		private bool IsSpecialCharacter(char c)
 	    {
