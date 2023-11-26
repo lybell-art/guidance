@@ -7,6 +7,7 @@ public class AssignmentBase : MonoBehaviour, IAssignmentObject
 {
     private IAssignment stateHandler;
     private IEnumerator activatedTimeout;
+    protected float timeLimit = Constants.assignmentTimeout;
     public int priority{get; protected set;}
     public Vector3 position
     {
@@ -44,7 +45,7 @@ public class AssignmentBase : MonoBehaviour, IAssignmentObject
     }
     protected IEnumerator TimeoverTask()
     {
-        yield return new WaitForSecondsPausable(Constants.assignmentTimeout);
+        yield return new WaitForSecondsPausable(timeLimit);
         stateHandler.FailTask();
         Delete();
     }

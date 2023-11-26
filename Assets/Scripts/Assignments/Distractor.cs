@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Distractor : AssignmentBase, ISaveableObject
 {
@@ -19,6 +20,7 @@ public class Distractor : AssignmentBase, ISaveableObject
 			spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
 		}
 		priority = 2;
+		base.timeLimit = 5;
 	}
 	public void SetManager(AssignmentManager manager)
 	{
